@@ -5,6 +5,7 @@ import Customers from "../components/Customers.vue";
 import DashBoard from "../components/DashBoard.vue";
 import OrderDetail from "../components/OrderDetail.vue";
 import Products from "../components/Products.vue";
+import Reports from "../components/Reports.vue";
 
 let Vue = wepos_get_lib("Vue");
 let Router = wepos_get_lib("Router");
@@ -46,10 +47,14 @@ const router = new Router({
                     name: "Customers",
                     component: Customers,
                 },
+                {
+                    path: "/reports",
+                    name: "Reports",
+                    component: Reports,
+                },
             ],
         },
     ]),
-    duplicateNavigationPolicy: "ignore",
 });
 router.beforeEach((to, from, next) => {
     if (to.name !== "Login" && !wepos.loggedin) {
