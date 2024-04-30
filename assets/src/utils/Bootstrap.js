@@ -5,6 +5,7 @@ import VueHotkey from "v-hotkey";
 import { VClosePopover, VPopover, VTooltip } from "v-tooltip";
 import Vue from "vue";
 import * as VueChartJS from "vue-chartjs";
+import { Line } from "vue-chartjs";
 import Popover from "vue-js-popover";
 import Multiselect from "vue-multiselect";
 import "vue-multiselect/dist/vue-multiselect.min.css";
@@ -56,6 +57,7 @@ Vue.directive("tooltip", VTooltip);
 Vue.directive("close-popover", VClosePopover);
 Vue.component("v-popover", VPopover);
 Vue.component("multiselect", Multiselect);
+Vue.component("v-cline", Line);
 
 Vue.directive("click-outside", {
     bind: function (el, binding, vNode) {

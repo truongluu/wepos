@@ -1,14 +1,13 @@
 <template>
-    <div class="product-contents">
+    <div class="page page__wrapper product-contents">
         <header>
             <a
                 href="#/orders"
                 class="wepos-btn wepos-btn-primary wepos-btn-back mr-2"
                 ><span class="flaticon-left-arrow-key"></span
             ></a>
-            <div class="title">
-                <h1>{{ __("Orders", "wepos") }}</h1>
-            </div>
+
+            <h1 class="page__title">{{ __("Orders", "wepos") }}</h1>
         </header>
         <div>
             <div class="row">

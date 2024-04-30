@@ -89,7 +89,10 @@ export default {
                     width: 80,
                     renderBodyCell: ({ row }, h) => {
                         return h(ActionsButton, {
-                            props: { actionId: row["id"] },
+                            props: {
+                                actionId: row["id"],
+                                status: row["status"],
+                            },
                             on: {
                                 onEditAction: this.editOrder,
                                 onRefundAction: this.refundOrder,

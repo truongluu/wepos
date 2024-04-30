@@ -30,7 +30,7 @@ class ReportTopSellersController extends \WC_REST_Report_Top_Sellers_Controller
         register_rest_route($this->namespace, '/' . $this->base, array(
             array(
                 'methods'             => \WP_REST_Server::READABLE,
-                'callback'            => array($this, 'get_items1'),
+                'callback'            => array($this, 'get_items'),
                 'permission_callback' => array($this, 'get_items_permissions_check'),
                 'args'                => $this->get_collection_params(),
             ),
@@ -44,7 +44,7 @@ class ReportTopSellersController extends \WC_REST_Report_Top_Sellers_Controller
      * @param WP_REST_Request $request
      * @return array|WP_Error
      */
-    public function get_items1($request)
+    public function get_items($request)
     {
         // Set date filtering.
         $filter = array(
