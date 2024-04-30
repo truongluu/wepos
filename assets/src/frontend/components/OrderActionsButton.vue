@@ -23,7 +23,7 @@
                                 >{{ __("View Details", "wepos") }}</router-link
                             >
                         </li>
-                        <li>
+                        <li v-if="status !== 'refunded'">
                             <a href="#" @click="refundAction"
                                 ><span
                                     class="flaticon-information quick-menu-icon"
@@ -41,7 +41,7 @@
 <script>
 export default {
     name: "OrderActionsButton",
-    props: ["actionId"],
+    props: ["actionId", "status"],
     data() {
         return { show: false };
     },

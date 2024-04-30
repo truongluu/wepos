@@ -1,4 +1,4 @@
-import { DATE_TIME_FORMAT } from "@/const";
+import { DATE_FORMAT, DATE_TIME_FORMAT } from "@/const";
 import { __, _nx, setLocaleData, sprintf } from "@/utils/i18n";
 import dayjs from "dayjs";
 export default {
@@ -209,7 +209,11 @@ export default {
                 : product.name;
         },
     },
-
+    filters: {
+        date(val) {
+            return val ? dayjs(val).format(DATE_FORMAT) : "";
+        },
+    },
     computed: {
         wepos() {
             return wepos;
