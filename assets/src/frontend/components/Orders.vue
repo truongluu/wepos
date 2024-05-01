@@ -34,6 +34,7 @@ export default {
     components: { FilterOrder, ActionsButton },
     data() {
         return {
+            orderByKey: {},
             selectedOrderId: 0,
             orderStatus: "any",
             columnHiddenOption: {
@@ -58,6 +59,7 @@ export default {
                     key: "a",
                     title: "Order",
                     width: 200,
+                    align: "left",
                 },
                 {
                     field: "total",
@@ -111,7 +113,29 @@ export default {
         };
     },
     methods: {
-        confirmRefundOrder() {},
+        confirmRefundOrder(orderId) {
+            this.showLoading();
+            const currentOrder = this.orderByKey[orderId];
+            if (currentOrder) {
+                wepos.api
+                    .post(
+                        wepos.rest.root +
+                            wepos.rest.posversion +
+                            `/orders/${orderId}/refunds`,
+                        {
+                            api_refund: false,
+                            amount: currentOrder.total,
+                        }
+                    )
+                    .done(() => {
+                        this.startFetchOrders(1);
+                        this.hideLoading();
+                    })
+                    .always(() => {
+                        this.hideLoading();
+                    });
+            }
+        },
         editOrder(orderId) {
             this.$router.push(`/orders/${orderId}`);
         },
@@ -122,12 +146,15 @@ export default {
                 text: this.__("You want to refund this order?", "wepos"),
             }).then((result) => {
                 if (result.isConfirmed) {
-                    this.confirmRefundOrder();
+                    this.confirmRefundOrder(orderId);
                 }
             });
         },
 
-        startFetchOrders() {
+        startFetchOrders(page) {
+            if (page) {
+                this.page = page;
+            }
             this.tableData = [];
             this.fetchOrders();
         },
@@ -161,6 +188,7 @@ export default {
                         : this.__("Guest user", "wepos"),
                 };
                 this.tableData = this.tableData.concat(orderData);
+                this.orderByKey[order.id] = order;
             });
             if (this.tableData.length === 0) {
                 this.showEmpty = true;
@@ -183,6 +211,8 @@ export default {
                     this.totalPages = parseInt(
                         xhr.getResponseHeader("X-WP-TotalPages")
                     );
+                })
+                .always(() => {
                     this.hideLoading();
                     this.orderLoading = false;
                 });
