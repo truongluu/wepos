@@ -9,7 +9,7 @@
                         type="button"
                         @click="addNewCustomer"
                     >
-                        Add new Customer
+                        {{ __("Add new Customer", "wepos") }}
                     </button>
                 </div>
                 <div class="page__actions--right">
@@ -17,7 +17,9 @@
                         <input
                             type="text"
                             name="search"
+                            v-model="search"
                             placeholder="Type for search and Enter..."
+                            @keyup.enter="startFetchCustomers(1)"
                         />
                         <span
                             class="search-icon flaticon-musica-searcher"
@@ -216,6 +218,7 @@ export default {
     components: { DefaultLayout, Modal },
     data() {
         return {
+            search: "",
             isDisabled: false,
             stateList: [],
             selectedState: null,
@@ -557,7 +560,9 @@ export default {
                 .get(
                     wepos.rest.root +
                         wepos.rest.posversion +
-                        `/customers?per_page=${this.pageSize}&page=${this.page}`
+                        `/customers?per_page=${this.pageSize}&page=${
+                            this.page
+                        }${this.search ? `&search=${this.search}` : ""}`
                 )
                 .done((response, status, xhr) => {
                     this.appendCustomers(response);

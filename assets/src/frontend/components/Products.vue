@@ -10,7 +10,9 @@
                         <input
                             type="text"
                             name="search"
+                            v-model="search"
                             placeholder="Type for search and Enter..."
+                            @keyup.enter="startFetchProducts(1)"
                         />
                         <span
                             class="search-icon flaticon-musica-searcher"
@@ -61,6 +63,7 @@ export default {
     components: { Modal, QuickEdit },
     data() {
         return {
+            search: "",
             selectedProduct: {},
             showQuickEdit: false,
             isDisabled: false,
@@ -271,7 +274,9 @@ export default {
                 .get(
                     wepos.rest.root +
                         wepos.rest.posversion +
-                        `/products?per_page=${this.pageSize}&page=${this.page}`
+                        `/products?per_page=${this.pageSize}&page=${this.page}${
+                            this.search ? `&search=${this.search}` : ""
+                        }`
                 )
                 .done((response, status, xhr) => {
                     this.appendProducts(response);
