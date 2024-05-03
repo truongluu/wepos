@@ -1,17 +1,21 @@
 <template>
     <div class="login login__container">
         <div class="login__content">
-            <div class="flex justify--sb align--center">
+            <div class="flex flex--column justify--sb align--center">
                 <div class="login__image">
                     <img
                         :src="wepos.assets_url + '/images/logo.svg'"
                         alt=""
-                        width="200px"
+                        width="100px"
                     />
                 </div>
-                <h1 class="login__title">POS</h1>
+                <h1 class="login__title">
+                    {{ __("Sign in to your account", "wepos") }}
+                </h1>
             </div>
-            <alert v-if="error">Username and Password are incorrect</alert>
+            <alert v-if="error">{{
+                __("Username and Password are incorrect", "wepos")
+            }}</alert>
             <form @submit.prevent="login()" class="form form__container">
                 <div class="form__item">
                     <input type="text" v-model="username" name="username" />
@@ -27,7 +31,7 @@
                         class="login__submit"
                         type="submit"
                     >
-                        Login
+                        {{ __("Login", "wepos") }}
                     </button>
                 </div>
             </form>
@@ -88,20 +92,22 @@ export default {
     &__content {
         padding: 50px;
         position: absolute;
-        top: calc(50% - 120px);
+        top: 250px;
+
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
-
-        width: 480px;
+        width: 500px;
         margin: 0 auto;
+        @media (min-height: 500px) {
+            top: calc(50%);
+        }
     }
     &__title {
         text-align: center;
-        font-size: 65px;
+        font-size: 22px;
         font-weight: 700;
         color: var(--primary-color);
         flex-grow: 1;
-        padding-left: 20px;
         text-align: left;
     }
     input[type="text"] {

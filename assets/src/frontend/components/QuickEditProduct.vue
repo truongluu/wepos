@@ -15,7 +15,7 @@
                                 id="title"
                                 type="text"
                                 v-model="product.name"
-                                placeholder="Title"
+                                :placeholder="__('Title', 'wepos')"
                             />
                         </div>
                         <div class="form-row">
@@ -131,7 +131,7 @@
                             min="0"
                             step="any"
                             v-model="product.price"
-                            placeholder="Price"
+                            :placeholder="__('Price', 'wepos')"
                         />
                     </div>
                     <div class="form-row">
@@ -144,7 +144,7 @@
                             v-model="product.sale_price"
                             min="0"
                             step="any"
-                            placeholder="Sale price"
+                            :placeholder="__('Sale price', 'wepos')"
                         />
                     </div>
                     <div class="form-row">
@@ -154,7 +154,7 @@
                             type="number"
                             min="0"
                             step="any"
-                            placeholder="Weight"
+                            :placeholder="__('Weight', 'wepos')"
                             v-model="product.weight"
                         />
                     </div>

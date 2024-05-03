@@ -20,7 +20,7 @@
                                 ><span
                                     class="flaticon-empty-cart quick-menu-icon"
                                 ></span
-                                >Edit</a
+                                >{{ __("Edit", "wepos") }}</a
                             >
                         </li>
                         <li>
@@ -28,7 +28,7 @@
                                 ><span
                                     class="flaticon-information quick-menu-icon"
                                 ></span
-                                >Delete</a
+                                >{{ __("Delete", "wepos") }}</a
                             >
                         </li>
                     </ul>

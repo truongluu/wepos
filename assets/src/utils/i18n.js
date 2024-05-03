@@ -10,8 +10,9 @@ var i18n = {};
  *
  * @param {Object} data Locale data configuration.
  */
-export function setLocaleData( data ) {
-    var jed = new Jed( data );
+export function setLocaleData(data) {
+    var jed = new Jed(data);
+
     i18n[jed._textdomain] = jed;
 }
 
@@ -21,11 +22,10 @@ export function setLocaleData( data ) {
  *
  * @return {Jed} Jed instance.
  */
-export function getI18n(domain = '') {
-    if ( ! i18n[domain] ) {
-        setLocaleData( { '': {} } );
+export function getI18n(domain = "") {
+    if (!i18n[domain]) {
+        setLocaleData({ "": {} });
     }
-
     return i18n[domain];
 }
 
@@ -39,8 +39,8 @@ export function getI18n(domain = '') {
  *
  * @return {string} Translated text.
  */
-export function __( text, domain ) {
-    return getI18n(domain) ? getI18n(domain).dgettext( domain, text ) : text;
+export function __(text, domain) {
+    return getI18n(domain) ? getI18n(domain).dgettext(domain, text) : text;
 }
 
 /**
@@ -54,8 +54,8 @@ export function __( text, domain ) {
  *
  * @return {string} Translated context string without pipe.
  */
-export function _x( text, context, domain ) {
-    return getI18n(domain).dpgettext( domain, context, text );
+export function _x(text, context, domain) {
+    return getI18n(domain).dpgettext(domain, context, text);
 }
 
 /**
@@ -72,8 +72,8 @@ export function _x( text, context, domain ) {
  *
  * @return {string} The translated singular or plural form.
  */
-export function _n( single, plural, number, domain ) {
-    return getI18n(domain).dngettext( domain, single, plural, number );
+export function _n(single, plural, number, domain) {
+    return getI18n(domain).dngettext(domain, single, plural, number);
 }
 
 /**
@@ -91,8 +91,8 @@ export function _n( single, plural, number, domain ) {
  *
  * @return {string} The translated singular or plural form.
  */
-export function _nx( single, plural, number, context, domain ) {
-    return getI18n(domain).dnpgettext( domain, context, single, plural, number );
+export function _nx(single, plural, number, context, domain) {
+    return getI18n(domain).dnpgettext(domain, context, single, plural, number);
 }
 
 /**

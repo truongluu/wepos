@@ -18,7 +18,9 @@
                             type="text"
                             name="search"
                             v-model="search"
-                            placeholder="Type for search and Enter..."
+                            :placeholder="
+                                __('Type for search and Enter', 'wepos') + '...'
+                            "
                             @keyup.enter="startFetchCustomers(1)"
                         />
                         <span
@@ -259,7 +261,7 @@ export default {
                 {
                     field: "name",
                     key: "a",
-                    title: "Name",
+                    title: this.__("Name", "wepos"),
                     align: "left",
                 },
                 {
@@ -272,12 +274,12 @@ export default {
                 {
                     field: "registeredDate",
                     key: "d",
-                    title: "Registered date",
+                    title: this.__("Registered date", "wepos"),
                     align: "left",
                 },
                 {
                     field: "",
-                    title: "Action",
+                    title: "",
                     key: "e",
                     align: "left",
                     width: 80,
@@ -576,6 +578,61 @@ export default {
         },
     },
     created() {
+        this.columns = [
+            {
+                field: "",
+                key: "index",
+                title: "#",
+                renderBodyCell: ({ rowIndex }, h) => {
+                    return `${++rowIndex}`;
+                },
+            },
+            {
+                field: "id",
+                key: "id",
+                title: "",
+            },
+            {
+                field: "name",
+                key: "a",
+                title: this.__("Name", "wepos"),
+                align: "left",
+            },
+            {
+                field: "email",
+                key: "b",
+                title: "Email",
+                align: "left",
+            },
+            {
+                field: "phone",
+                key: "c",
+                title: this.__("Phone", "wepos"),
+                align: "left",
+            },
+            {
+                field: "registeredDate",
+                key: "d",
+                title: this.__("Registered date", "wepos"),
+                align: "left",
+            },
+            {
+                field: "",
+                title: "",
+                key: "e",
+                align: "left",
+                width: 80,
+                renderBodyCell: ({ row }, h) => {
+                    return h(ActionsButton, {
+                        props: { actionId: row["id"] },
+                        on: {
+                            onEditAction: this.editCustomer,
+                            onDeleteAction: this.deleteCustomer,
+                        },
+                    });
+                },
+            },
+        ];
         this.fetchMembers();
     },
 };

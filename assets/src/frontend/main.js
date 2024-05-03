@@ -1,23 +1,22 @@
 // import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from '@/utils/store/'
+import store from "@/utils/store/";
+import App from "./App.vue";
+import router from "./router";
 
-let Vue = wepos_get_lib('Vue');
+let Vue = wepos_get_lib("Vue");
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-    el: '#vue-frontend-app',
+    el: "#vue-frontend-app",
     router,
     store,
-    render: h => h(App),
+    render: (h) => h(App),
     created() {
-        this.setLocaleData( wepos.i18n['wepos'] );
-
-        if ( wepos.i18n['wepos-pro'] ) {
-            this.setLocaleData( wepos.i18n['wepos-pro'] );
+        this.setLocaleData(wepos.i18n["wepos"]);
+        if (wepos.i18n["wepos-pro"]) {
+            this.setLocaleData(wepos.i18n["wepos-pro"]);
         }
-    }
-})
+    },
+});

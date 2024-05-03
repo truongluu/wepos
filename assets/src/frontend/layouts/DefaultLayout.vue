@@ -10,7 +10,7 @@
                 <router-link tag="li" to="/" exact>
                     <a>
                         <span class="nav-icon flaticon-counter-1"></span>
-                        <span class="menu-text">Home</span>
+                        <span class="menu-text">{{ __("Home", "wepos") }}</span>
                     </a>
                 </router-link>
                 <router-link tag="li" to="/products">
@@ -18,26 +18,34 @@
                         <span
                             class="nav-icon flaticon-delivery-package-opened"
                         ></span>
-                        <span class="menu-text">Products</span>
+                        <span class="menu-text">{{
+                            __("Products", "wepos")
+                        }}</span>
                     </a>
                 </router-link>
                 <router-link tag="li" to="/orders">
                     <a>
                         <span class="nav-icon flaticon-giftbox"></span>
-                        <span class="menu-text">Orders</span>
+                        <span class="menu-text">{{
+                            __("Orders", "wepos")
+                        }}</span>
                     </a>
                 </router-link>
 
                 <router-link tag="li" to="/customers">
                     <a>
                         <span class="nav-icon flaticon-user-1"></span>
-                        <span class="menu-text">Customers</span>
+                        <span class="menu-text">{{
+                            __("Customers", "wepos")
+                        }}</span>
                     </a>
                 </router-link>
                 <router-link tag="li" to="/reports">
                     <a>
                         <span class="nav-icon flaticon-report"></span>
-                        <span class="menu-text">Reports</span>
+                        <span class="menu-text">{{
+                            __("Reports", "wepos")
+                        }}</span>
                     </a>
                 </router-link>
             </ul>
