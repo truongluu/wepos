@@ -26,7 +26,6 @@ function wepos_get_translations_for_plugin_domain($domain, $language_dir = null)
     if ($language_dir == null) {
         $language_dir      = WEPOS_PATH . '/languages/';
     }
-
     $languages     = get_available_languages($language_dir);
     $get_site_lang = is_admin() ? get_user_locale() : get_locale();
     $mo_file_name  = $domain . '-' . $get_site_lang;

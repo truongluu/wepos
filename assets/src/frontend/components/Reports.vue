@@ -35,28 +35,28 @@
                         <a
                             :class="{ selected: period === 'week' }"
                             @click="filterByPeriod('week')"
-                            >Week</a
+                            >{{ __("Week", "wepos") }}</a
                         >
                     </li>
                     <li>
                         <a
                             :class="{ selected: period === 'month' }"
                             @click="filterByPeriod('month')"
-                            >Month</a
+                            >{{ __("Month", "wepos") }}</a
                         >
                     </li>
                     <li>
                         <a
                             :class="{ selected: period === 'last_month' }"
                             @click="filterByPeriod('last_month')"
-                            >Last Month</a
+                            >{{ __("Last Month", "wepos") }}</a
                         >
                     </li>
                     <li>
                         <a
                             :class="{ selected: period === 'year' }"
                             @click="filterByPeriod('year')"
-                            >Year</a
+                            >{{ __("Year", "wepos") }}</a
                         >
                     </li>
                 </ul>
@@ -237,6 +237,7 @@ import {
     Tooltip,
 } from "chart.js";
 
+import { __ } from "@/utils/i18n";
 import dayjs from "dayjs";
 import { Line as LineChartGenerator } from "vue-chartjs/legacy";
 import { FILTER_DATE_FORMAT } from "../../const";
@@ -261,7 +262,7 @@ export default {
                 labels: [],
                 datasets: [
                     {
-                        label: "Total Sale",
+                        label: __("Total Sale", "wepos"),
                         backgroundColor: "#3b80f4",
                         data: [],
                     },
@@ -280,89 +281,8 @@ export default {
             chartOptions: { responsive: true, maintainAspectRatio: false },
             period: "", //week, month, last_month and year
             dateRange: { startDate: null, endDate: null },
-            orderColumns: [
-                {
-                    field: "date",
-                    key: "date",
-                    title: "Date",
-                    align: "left",
-                    width: 200,
-                },
-                {
-                    field: "id",
-                    key: "id",
-                    title: "ID",
-                },
-                {
-                    field: "total",
-                    key: "total",
-                    title: "Total Sale",
-                    renderBodyCell: ({ row }) => {
-                        return this.formatPrice(row["total"] ?? "0");
-                    },
-                },
-                {
-                    field: "netSale",
-                    key: "netSale",
-                    title: "Net Sale",
-                    renderBodyCell: ({ row }) => {
-                        return this.formatPrice(row["netSale"] ?? "0");
-                    },
-                },
-                {
-                    field: "totalProducts",
-                    key: "totalProducts",
-                    title: "Total Product",
-                    align: "left",
-                    width: 150,
-                },
-                {
-                    field: "customer",
-                    key: "customer",
-                    title: "Customer",
-                    align: "left",
-                },
-                {
-                    field: "status",
-                    key: "status",
-                    title: "Status",
-                },
-            ],
-            columns: [
-                {
-                    field: "",
-                    key: "index",
-                    title: "#",
-                    renderBodyCell: ({ rowIndex }, h) => {
-                        return `${++rowIndex}`;
-                    },
-                },
-                {
-                    field: "name",
-                    key: "name",
-                    title: "Title",
-                    align: "left",
-                },
-                {
-                    field: "sku",
-                    key: "sku",
-                    title: "SKU",
-                    align: "left",
-                },
-                {
-                    field: "total",
-                    key: "total",
-                    title: "Total Sale",
-                    renderBodyCell: ({ row }) => {
-                        return this.formatPrice(row["total"] ?? "0");
-                    },
-                },
-                {
-                    field: "quantity",
-                    key: "quantity",
-                    title: "Total Unit Sold",
-                },
-            ],
+            orderColumns: [],
+            columns: [],
             tableData: [],
             orderTableData: [],
             reportLoading: false,
@@ -407,7 +327,7 @@ export default {
                     id: order.id,
                     order: `Order #${order.id}`,
                     total: this.formatPrice(order.total),
-                    status: ORDER_STATUS[order.status] ?? "",
+                    status: this.__(ORDER_STATUS[order.status], "wepos") ?? "",
                     date: this.formatDate(order.date_created),
                     totalProducts: order.line_items.reduce(
                         (productCounter, item) =>
@@ -497,6 +417,92 @@ export default {
         },
     },
     created() {
+        this.columns = [
+            {
+                field: "",
+                key: "index",
+                title: "#",
+                renderBodyCell: ({ rowIndex }, h) => {
+                    return `${++rowIndex}`;
+                },
+            },
+            {
+                field: "name",
+                key: "name",
+                title: this.__("Title", "wepos"),
+                align: "left",
+            },
+            {
+                field: "sku",
+                key: "sku",
+                title: "SKU",
+                align: "left",
+            },
+            {
+                field: "total",
+                key: "total",
+                title: this.__("Total Sale", "wepos"),
+                align: "right",
+                renderBodyCell: ({ row }) => {
+                    return this.formatPrice(row["total"] ?? "0");
+                },
+            },
+            {
+                field: "quantity",
+                key: "quantity",
+                title: this.__("Total Unit Sold", "wepos"),
+            },
+        ];
+        this.orderColumns = [
+            {
+                field: "date",
+                key: "date",
+                title: this.__("Date", "wepos"),
+                align: "left",
+                width: 200,
+            },
+            {
+                field: "id",
+                key: "id",
+                title: this.__("ID", "wepos"),
+            },
+            {
+                field: "total",
+                key: "total",
+                title: this.__("Total Sale", "wepos"),
+                align: "right",
+                renderBodyCell: ({ row }) => {
+                    return this.formatPrice(row["total"] ?? "0");
+                },
+            },
+            {
+                field: "netSale",
+                key: "netSale",
+                title: this.__("Net Sale", "wepos"),
+                align: "right",
+                renderBodyCell: ({ row }) => {
+                    return this.formatPrice(row["netSale"] ?? "0");
+                },
+            },
+            {
+                field: "totalProducts",
+                key: "totalProducts",
+                title: this.__("Total Product", "wepos"),
+                width: 150,
+            },
+            {
+                field: "customer",
+                key: "customer",
+                title: this.__("Customer", "wepos"),
+                align: "left",
+            },
+            {
+                field: "status",
+                key: "status",
+                align: "left",
+                title: this.__("Status", "wepos"),
+            },
+        ];
         this.fetchReportSales();
         this.fetchReportTopSellers();
 
@@ -549,7 +555,7 @@ export default {
     li {
         display: inline-block;
         a {
-            cursor:pointer;
+            cursor: pointer;
             text-decoration: none;
             padding: 4px 15px;
             min-width: 80px;

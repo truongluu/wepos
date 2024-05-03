@@ -11,7 +11,9 @@
                             type="text"
                             name="search"
                             v-model="search"
-                            placeholder="Type for search and Enter..."
+                            :placeholder="
+                                __('Type for search and Enter', 'wepos') + '...'
+                            "
                             @keyup.enter="startFetchProducts(1)"
                         />
                         <span
@@ -53,6 +55,7 @@
 <script>
 import { DEFAULT_PAGE_SIZE, STOCK_MAPPERS } from "@/const";
 
+import { __ } from "@/utils/i18n";
 import ActionsButton from "./ActionsButton.vue";
 import QuickEdit from "./QuickEditProduct.vue";
 
@@ -88,7 +91,7 @@ export default {
                 {
                     field: "image",
                     key: "image",
-                    title: "Image",
+                    title: __("Image", "wepos"),
                     renderBodyCell: ({ row }, h) => {
                         return h("img", {
                             attrs: { src: row["image"], width: 65 },
@@ -98,13 +101,13 @@ export default {
                 {
                     field: "title",
                     key: "title",
-                    title: "Title",
+                    title: __("Title", "wepos"),
                     align: "left",
                 },
                 {
                     field: "stock",
                     key: "stock",
-                    title: "Stock",
+                    title: __("Stock", "wepos"),
                     align: "left",
                     renderBodyCell: ({ row }, h) => {
                         return h(
@@ -290,6 +293,88 @@ export default {
         },
     },
     created() {
+        this.columns = [
+            {
+                field: "",
+                key: "index",
+                title: "#",
+                renderBodyCell: ({ rowIndex }, h) => {
+                    return `${++rowIndex}`;
+                },
+            },
+            {
+                field: "image",
+                key: "image",
+                title: this.__("Image", "wepos"),
+                renderBodyCell: ({ row }, h) => {
+                    return h("img", {
+                        attrs: { src: row["image"], width: 65 },
+                    });
+                },
+            },
+            {
+                field: "title",
+                key: "title",
+                title: this.__("Title", "wepos"),
+                align: "left",
+            },
+            {
+                field: "stock",
+                key: "stock",
+                title: this.__("Stock", "wepos"),
+                align: "left",
+                renderBodyCell: ({ row }, h) => {
+                    return h(
+                        "span",
+                        {
+                            attrs: { class: row["stock"] },
+                        },
+                        [this.__(STOCK_MAPPERS[row["stock"]], "wepos")]
+                    );
+                },
+            },
+            { field: "sku", key: "sku", title: "SKU", align: "left" },
+            {
+                field: "price",
+                key: "price",
+                title: this.__("Price", "wepos"),
+                align: "left",
+                renderBodyCell: ({ row }, h) => {
+                    const productId = row["id"];
+                    const prices = this.productPrice[productId];
+                    const priceFrom = prices[0];
+                    let priceTo = "";
+                    if (prices.length > 1 && prices[prices.length - 1]) {
+                        priceTo = prices[prices.length - 1];
+                    }
+                    return `${this.formatPrice(priceFrom)} ${
+                        priceTo ? `- ${this.formatPrice(priceTo)}` : ""
+                    }`;
+                },
+            },
+            {
+                field: "createdAt",
+                key: "createdAt",
+                title: this.__("Created At", "wepos"),
+                align: "left",
+            },
+            {
+                field: "",
+                title: "",
+                key: "e",
+                align: "left",
+                width: 80,
+                renderBodyCell: ({ row }, h) => {
+                    return h(ActionsButton, {
+                        props: { actionId: row["id"] },
+                        on: {
+                            onEditAction: this.editProduct,
+                            onDeleteAction: this.deleteProduct,
+                        },
+                    });
+                },
+            },
+        ];
         this.fetchProducts();
     },
 };

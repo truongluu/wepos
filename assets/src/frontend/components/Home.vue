@@ -325,10 +325,10 @@
                                 <th width="65%">
                                     {{ __("Product", "wepos") }}
                                 </th>
-                                <th width="15%">
+                                <th width="20%">
                                     {{ __("Qty", "wepos") }}
                                 </th>
-                                <th width="30%">
+                                <th width="25%">
                                     {{ __("Price", "wepos") }}
                                 </th>
                                 <th></th>

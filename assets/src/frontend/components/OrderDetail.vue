@@ -326,7 +326,7 @@
                                         <div class="row align-item-baseline">
                                             <div class="col-1">
                                                 <span class="text-disabled"
-                                                    >added
+                                                    >{{ __("added", "wepos") }}
                                                     {{
                                                         formatDate(
                                                             note.date_created
@@ -369,10 +369,20 @@
                                                     "
                                                 >
                                                     <option value="true">
-                                                        Customer Note
+                                                        {{
+                                                            __(
+                                                                "Customer Note",
+                                                                "wepos"
+                                                            )
+                                                        }}
                                                     </option>
                                                     <option value="false">
-                                                        Admin Note
+                                                        {{
+                                                            __(
+                                                                "Admin Note",
+                                                                "wepos"
+                                                            )
+                                                        }}
                                                     </option>
                                                 </select>
                                             </div>

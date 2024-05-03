@@ -26,6 +26,7 @@
 <script>
 import { DEFAULT_PAGE_SIZE, ORDER_STATUS } from "@/const";
 
+import { __ } from "@/utils/i18n";
 import FilterOrder from "./FilterOrder.vue";
 import ActionsButton from "./OrderActionsButton.vue";
 
@@ -57,20 +58,20 @@ export default {
                 {
                     field: "order",
                     key: "a",
-                    title: "Order",
+                    title: __("Order", "wepos"),
                     width: 200,
                     align: "left",
                 },
                 {
                     field: "total",
                     key: "b",
-                    title: "Total",
+                    title: __("Total", "wepos"),
                     align: "left",
                 },
                 {
                     field: "status",
                     key: "c",
-                    title: "Status",
+                    title: __("Status", "wepos"),
                     align: "left",
                     renderBodyCell: ({ row }) => {
                         return `${ORDER_STATUS[row["status"]]}`;
@@ -79,11 +80,21 @@ export default {
                 {
                     field: "customer",
                     key: "d",
-                    title: "Customer",
+                    title: __("Customer", "wepos"),
                     align: "left",
                 },
-                { field: "gateway", key: "e", title: "Gateway", align: "left" },
-                { field: "date", key: "f", title: "Date", align: "left" },
+                {
+                    field: "gateway",
+                    key: "e",
+                    title: __("Gateway", "wepos"),
+                    align: "left",
+                },
+                {
+                    field: "date",
+                    key: "f",
+                    title: __("Date", "wepos"),
+                    align: "left",
+                },
                 {
                     field: "",
                     key: "actions",
@@ -219,6 +230,82 @@ export default {
         },
     },
     created() {
+        this.columns = [
+            {
+                field: "id",
+                key: "id",
+                title: "",
+            },
+            {
+                field: "",
+                key: "index",
+                title: "#",
+                renderBodyCell: ({ rowIndex }) => {
+                    return `${++rowIndex}`;
+                },
+            },
+            {
+                field: "order",
+                key: "a",
+                title: this.__("Order", "wepos"),
+                width: 200,
+                align: "left",
+            },
+            {
+                field: "total",
+                key: "b",
+                title: this.__("Total", "wepos"),
+                align: "left",
+            },
+            {
+                field: "status",
+                key: "c",
+                title: this.__("Status", "wepos"),
+                align: "left",
+                renderBodyCell: ({ row }) => {
+                    return this.__(`${ORDER_STATUS[row["status"]]}`, "wepos");
+                },
+            },
+            {
+                field: "customer",
+                key: "d",
+                title: this.__("Customer", "wepos"),
+                align: "left",
+            },
+            {
+                field: "gateway",
+                key: "e",
+                title: this.__("Gateway", "wepos"),
+                align: "left",
+                renderBodyCell: ({ row }) => {
+                    return this.__(`${row["gateway"]}`, "wepos");
+                },
+            },
+            {
+                field: "date",
+                key: "f",
+                title: this.__("Date", "wepos"),
+                align: "left",
+            },
+            {
+                field: "",
+                key: "actions",
+                title: "",
+                width: 80,
+                renderBodyCell: ({ row }, h) => {
+                    return h(ActionsButton, {
+                        props: {
+                            actionId: row["id"],
+                            status: row["status"],
+                        },
+                        on: {
+                            onEditAction: this.editOrder,
+                            onRefundAction: this.refundOrder,
+                        },
+                    });
+                },
+            },
+        ];
         this.fetchOrders();
     },
 };

@@ -10,7 +10,7 @@
                 <router-link tag="li" to="/" exact>
                     <a>
                         <span class="nav-icon flaticon-counter-1"></span>
-                        <span class="menu-text">Home</span>
+                        <span class="menu-text">{{ __("Home", "wepos") }}</span>
                     </a>
                 </router-link>
                 <router-link tag="li" to="/products">
@@ -18,29 +18,49 @@
                         <span
                             class="nav-icon flaticon-delivery-package-opened"
                         ></span>
-                        <span class="menu-text">Products</span>
+                        <span class="menu-text">{{
+                            __("Products", "wepos")
+                        }}</span>
                     </a>
                 </router-link>
                 <router-link tag="li" to="/orders">
                     <a>
                         <span class="nav-icon flaticon-giftbox"></span>
-                        <span class="menu-text">Orders</span>
+                        <span class="menu-text">{{
+                            __("Orders", "wepos")
+                        }}</span>
                     </a>
                 </router-link>
 
                 <router-link tag="li" to="/customers">
                     <a>
                         <span class="nav-icon flaticon-user-1"></span>
-                        <span class="menu-text">Customers</span>
+                        <span class="menu-text">{{
+                            __("Customers", "wepos")
+                        }}</span>
                     </a>
                 </router-link>
                 <router-link tag="li" to="/reports">
                     <a>
                         <span class="nav-icon flaticon-report"></span>
-                        <span class="menu-text">Reports</span>
+                        <span class="menu-text">{{
+                            __("Reports", "wepos")
+                        }}</span>
                     </a>
                 </router-link>
             </ul>
+            <div class="bottom-actions">
+                <ul>
+                    <li>
+                        <a @click.prevent="logout">
+                            <span class="nav-icon flaticon-logout"></span>
+                            <span class="menu-text">{{
+                                __("Logout", "wepos")
+                            }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="default-layout__right">
             <router-view />
@@ -51,6 +71,12 @@
 <script>
 export default {
     name: "Dashboard",
+    methods: {
+        logout() {
+            wepos.hooks.doAction("wepos_before_logout");
+            window.location.href = wepos.logout_url.toString();
+        },
+    },
 };
 </script>
 
@@ -61,7 +87,7 @@ export default {
         flex-shrink: 0;
         flex-grow: 0;
         padding: 8px;
-
+        position: relative;
         .logo {
             padding: 10px;
             img {
@@ -128,7 +154,23 @@ export default {
                 }
             }
         }
+        .bottom-actions {
+            width: 100%;
+            position: absolute;
+            bottom: 20px;
+            margin: 0 -8px;
+            ul {
+                margin: 0;
+                li {
+                    cursor: pointer;
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
     }
+
     &__right {
         position: fixed;
         margin-left: 80px;
