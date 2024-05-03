@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: wePOS - Point Of Sale (POS) for WooCommerce 1.2.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wepos\n"
 "POT-Creation-Date: 2024-05-03 09:26:29+00:00\n"
-"PO-Revision-Date: 2024-05-03 21:12+0700\n"
+"PO-Revision-Date: 2024-05-03 21:29+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: vi\n"
@@ -234,7 +234,7 @@ msgstr "Đi đến biên nhận"
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:946
 #: assets/src/frontend/components/Home.vue:1262
 msgid "Process Payment"
-msgstr "Quy trình thanh toán"
+msgstr "Tiến hành thanh toán"
 
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:952
 #: assets/src/frontend/components/PrintReceipt.vue:5
