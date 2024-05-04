@@ -351,7 +351,8 @@
                                             <div
                                                 class="attribute"
                                                 v-if="
-                                                    item.attribute.length > 0 &&
+                                                    item.attribute?.length >
+                                                        0 &&
                                                     item.type === 'variable'
                                                 "
                                             >
@@ -788,7 +789,7 @@
                                             </div>
                                             <div
                                                 class="flex align--center justify--sb hold-cart"
-                                                @click="initPayment()"
+                                                @click="holdCart()"
                                             >
                                                 <div>
                                                     {{
@@ -992,7 +993,8 @@
                                             <div
                                                 class="attribute"
                                                 v-if="
-                                                    item.attribute.length > 0 &&
+                                                    item.attribute?.length >
+                                                        0 &&
                                                     item.type === 'variable'
                                                 "
                                             >
@@ -1373,6 +1375,7 @@ export default {
             ),
             productFilter: "",
             showLoadMoreProducts: true,
+            orderStatus: "",
         };
     },
     computed: {
@@ -1518,7 +1521,7 @@ export default {
             wepos.hooks.doAction("wepos_before_logout");
             window.location.href = wepos.logout_url.toString();
         },
-        emptyCart() {
+        emptyCartConfirmed() {
             this.$store.dispatch("Cart/emptyCartAction");
             this.$store.dispatch("Order/emptyOrderdataAction");
 
@@ -1536,6 +1539,87 @@ export default {
             this.cashAmount = "";
             this.eventBus.$emit("emptycart", this.orderdata);
             this.showQucikMenu = false;
+            localStorage.setItem("currentOrderId", "");
+        },
+        emptyCart(force = false) {
+            if (force) {
+                this.emptyCartConfirmed();
+            } else {
+                this.confirmAlert({
+                    title: this.__("Are you sure", "wepos"),
+                    text: this.__("You want to delete this cart?", "wepos"),
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.emptyCartConfirmed();
+                    }
+                });
+            }
+        },
+
+        holdCart() {
+            if (this.$store.state.Cart.cartdata.line_items.length <= 0) {
+                return;
+            }
+            this.showLoading();
+            var self = this,
+                gateway = weLo_.find(this.availableGateways, {
+                    id: this.orderdata.payment_method,
+                }),
+                currentGateWay = gateway?.id
+                    ? gateway
+                    : this.availableGateways[0],
+                orderdata = wepos.hooks.applyFilters(
+                    "wepos_order_form_data",
+                    {
+                        billing: this.orderdata.customer_id
+                            ? this.orderdata.billing
+                            : undefined,
+                        shipping: this.orderdata.customer_id
+                            ? this.orderdata.shipping
+                            : undefined,
+                        line_items: this.cartdata.line_items,
+                        fee_lines: this.cartdata.fee_lines,
+                        customer_id: this.orderdata.customer_id,
+                        customer_note: this.orderdata.customer_note,
+                        payment_method: this.orderdata.payment_method
+                            ? this.orderdata.payment_method
+                            : currentGateWay?.id,
+                        payment_method_title: this.orderdata
+                            .payment_method_title
+                            ? this.orderdata.payment_method_title
+                            : currentGateWay?.title,
+                        meta_data: [
+                            {
+                                key: "_wepos_is_pos_order",
+                                value: true,
+                            },
+                        ],
+                        total: this.$store.getters["Cart/getTotal"],
+                    },
+                    this.orderdata,
+                    this.cartdata
+                );
+
+            const currentOrderId = localStorage.getItem("currentOrderId") || "";
+            wepos.api[currentOrderId ? "put" : "post"](
+                wepos.rest.root +
+                    wepos.rest.wcversion +
+                    "/orders" +
+                    `${currentOrderId ? `/${currentOrderId}` : ""}`,
+                {
+                    ...orderdata,
+                    status: "on-hold",
+                }
+            )
+                .done(() => {
+                    this.success({
+                        title: this.__("Held order successfully", "wepos"),
+                    });
+                    this.emptyCartConfirmed();
+                })
+                .always(() => {
+                    this.hideLoading();
+                });
         },
         toggleProductView(e) {
             e.preventDefault();
@@ -1545,7 +1629,7 @@ export default {
             this.$router.push({
                 name: "Home",
             });
-            this.emptyCart();
+            this.emptyCart(true);
         },
         ableToProcess() {
             let canProcess =
@@ -1568,6 +1652,7 @@ export default {
             if (!this.$store.getters["Order/getCanProcessPayment"]) {
                 return;
             }
+
             var self = this,
                 gateway = weLo_.find(this.availableGateways, {
                     id: this.orderdata.payment_method,
@@ -1575,8 +1660,12 @@ export default {
                 orderdata = wepos.hooks.applyFilters(
                     "wepos_order_form_data",
                     {
-                        billing: this.orderdata.billing,
-                        shipping: this.orderdata.shipping,
+                        billing: this.orderdata.customer_id
+                            ? this.orderdata.billing
+                            : undefined,
+                        shipping: this.orderdata.customer_id
+                            ? this.orderdata.shipping
+                            : undefined,
                         line_items: this.cartdata.line_items,
                         fee_lines: this.cartdata.fee_lines,
                         customer_id: this.orderdata.customer_id,
@@ -1612,12 +1701,14 @@ export default {
                     opacity: 0.4,
                 },
             });
-
-            wepos.api
-                .post(
-                    wepos.rest.root + wepos.rest.wcversion + "/orders",
-                    orderdata
-                )
+            const currentOrderId = localStorage.getItem("currentOrderId") || "";
+            wepos.api[currentOrderId ? "put" : "post"](
+                wepos.rest.root +
+                    wepos.rest.wcversion +
+                    "/orders" +
+                    `${currentOrderId ? `/${currentOrderId}` : ""}`,
+                orderdata
+            )
                 .done((response) => {
                     wepos.api
                         .post(
@@ -2063,7 +2154,9 @@ export default {
         if (typeof localStorage != "undefined") {
             try {
                 var cartdata = JSON.parse(localStorage.getItem("cartdata"));
+
                 var orderdata = JSON.parse(localStorage.getItem("orderdata"));
+
                 cartdata = await this.maybeRemoveDeletedProduct(cartdata);
                 this.$store.dispatch("Cart/setCartDataAction", cartdata);
                 this.$store.dispatch("Order/setOrderDataAction", orderdata);

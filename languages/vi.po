@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: wePOS - Point Of Sale (POS) for WooCommerce 1.2.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wepos\n"
 "POT-Creation-Date: 2024-05-03 09:26:29+00:00\n"
-"PO-Revision-Date: 2024-05-03 21:29+0700\n"
+"PO-Revision-Date: 2024-05-04 14:37+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: vi\n"
@@ -517,7 +517,7 @@ msgstr "Đang xử lý"
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/FilterOrder.vue:29
 msgid "On hold"
-msgstr "Đang chờ"
+msgstr "Tạm giữ"
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/FilterOrder.vue:36
@@ -1297,3 +1297,15 @@ msgstr "Chỉnh sửa"
 
 msgid "Delete"
 msgstr "Xóa"
+
+msgid "You want to delete this cart?"
+msgstr "Bạn  muốn xóa giỏ hàng này?"
+
+msgid "Held order successfully"
+msgstr "Giữ đơn hàng thành công"
+
+msgid "Reopen"
+msgstr "Mở lại đơn"
+
+msgid "Reopen order successfully"
+msgstr "Mở lại đơn hàng thành công"

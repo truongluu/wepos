@@ -23,12 +23,20 @@
                                 >{{ __("View Details", "wepos") }}</router-link
                             >
                         </li>
-                        <li v-if="status !== 'refunded'">
+                        <li v-if="status === 'completed'">
                             <a href="#" @click="refundAction"
                                 ><span
                                     class="flaticon-information quick-menu-icon"
                                 ></span
                                 >{{ __("Refund", "wepos") }}</a
+                            >
+                        </li>
+                        <li v-if="status === 'on-hold'" class="on-hold">
+                            <a @click="reopenAction"
+                                ><span
+                                    class="flaticon-information flaticon-counter-1"
+                                ></span
+                                >{{ __("Reopen", "wepos") }}</a
                             >
                         </li>
                     </ul>
@@ -55,6 +63,10 @@ export default {
             this.show = false;
             this.$emit("onRefundAction", this.actionId);
         },
+        reopenAction() {
+            this.show = false;
+            this.$emit("onReopenAction", this.actionId);
+        },
         togglePopover() {
             this.show = !this.show;
         },
@@ -69,6 +81,17 @@ export default {
             &::before {
                 font-size: 14px;
                 color: #bdc0c9;
+            }
+        }
+    }
+}
+.on-hold {
+    cursor: pointer;
+    span {
+        &.flaticon-counter-1 {
+            &::before {
+                font-size: 14px;
+                margin-right: 5px;
             }
         }
     }
