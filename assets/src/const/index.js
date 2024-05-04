@@ -4,7 +4,7 @@ export const FILTER_DATE_FORMAT = "YYYY-MM-DD";
 export const DEFAULT_PAGE_SIZE = 30;
 export const STOCK_MAPPERS = {
     instock: "In Stock",
-    outofoutofstock: "Stock Out",
+    outofstock: "Stock Out",
 };
 
 export const ALLOW_BACKORDERS = [

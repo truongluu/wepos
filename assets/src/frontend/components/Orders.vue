@@ -161,6 +161,76 @@ export default {
                 }
             });
         },
+        reopenOrder(orderId) {
+            const orderData = this.orderByKey[orderId];
+            const {
+                billing,
+                customer_id,
+                customer_note,
+                payment_method,
+                payment_method_title,
+                shipping,
+                fee_lines,
+                line_items,
+            } = orderData;
+            if (line_items?.length) {
+                const productIds = line_items.map((item) => item.product_id);
+                this.showLoading();
+                wepos.api
+                    .get(
+                        wepos.rest.root +
+                            wepos.rest.posversion +
+                            "/products?include=" +
+                            productIds.toString()
+                    )
+                    .then((response) => {
+                        for (const productItem of response) {
+                            const productFromOrder = line_items.find(
+                                (lineItem) =>
+                                    lineItem.product_id === productItem.id
+                            );
+
+                            this.$store.dispatch(
+                                "Cart/addToCartActionWithQuantity",
+                                {
+                                    product: productItem,
+                                    quantity: productFromOrder?.quantity || 1,
+                                    line_item_id: productFromOrder?.id || 0,
+                                }
+                            );
+                        }
+                    })
+                    .always(() => {
+                        this.hideLoading();
+                    });
+            }
+
+            if (typeof localStorage != "undefined") {
+                localStorage.setItem("currentOrderId", `${orderId}`);
+                localStorage.setItem(
+                    "cartdata",
+                    JSON.stringify({
+                        ...this.$store.state.Cart.cartdata,
+                        fee_lines,
+                    })
+                );
+                localStorage.setItem(
+                    "orderdata",
+                    JSON.stringify({
+                        billing,
+                        customer_id,
+                        customer_note,
+                        payment_method,
+                        payment_method_title,
+                        shipping,
+                    })
+                );
+            }
+            this.$router.push({ name: "Home" });
+            this.success({
+                title: this.__("Reopen order successfully", "wepos"),
+            });
+        },
 
         startFetchOrders(page) {
             if (page) {
@@ -301,6 +371,7 @@ export default {
                         on: {
                             onEditAction: this.editOrder,
                             onRefundAction: this.refundOrder,
+                            onReopenAction: this.reopenOrder,
                         },
                     });
                 },

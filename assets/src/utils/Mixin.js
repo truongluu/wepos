@@ -135,6 +135,7 @@ export default {
                 confirmButtonColor: "#3b80f4",
                 cancelButtonColor: "#e34d4d",
                 confirmButtonText: this.__("Confirm", "wepos"),
+                cancelButtonText: this.__("Cancel", "wepos"),
             });
         },
         success({ title, position = "top-right" }) {

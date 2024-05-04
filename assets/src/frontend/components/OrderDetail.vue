@@ -232,7 +232,7 @@
                                         </div>
                                         <div class="col-1">
                                             <p class="text-disabled">
-                                                {{ orderStatus }}
+                                                {{ __(orderStatus, "wepos") }}
                                             </p>
                                         </div>
                                     </div>

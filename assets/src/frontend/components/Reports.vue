@@ -237,7 +237,6 @@ import {
     Tooltip,
 } from "chart.js";
 
-import { __ } from "@/utils/i18n";
 import dayjs from "dayjs";
 import { Line as LineChartGenerator } from "vue-chartjs/legacy";
 import { FILTER_DATE_FORMAT } from "../../const";
@@ -262,7 +261,7 @@ export default {
                 labels: [],
                 datasets: [
                     {
-                        label: __("Total Sale", "wepos"),
+                        label: "Total Sale",
                         backgroundColor: "#3b80f4",
                         data: [],
                     },
@@ -417,6 +416,11 @@ export default {
         },
     },
     created() {
+        this.dataTotalSale.datasets[0].label = this.__("Total Sale", "wepos");
+        this.dataTotalOrderSale.datasets[0].label = this.__(
+            "Total Orders",
+            "wepos"
+        );
         this.columns = [
             {
                 field: "",
