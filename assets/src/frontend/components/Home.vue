@@ -1521,6 +1521,10 @@ export default {
             wepos.hooks.doAction("wepos_before_logout");
             window.location.href = wepos.logout_url.toString();
         },
+        resetCartStorage() {
+            localStorage.setItem("cartdata", JSON.stringify({}));
+            localStorage.setItem("orderdata", {});
+        },
         emptyCartConfirmed() {
             this.$store.dispatch("Cart/emptyCartAction");
             this.$store.dispatch("Order/emptyOrderdataAction");
@@ -1540,6 +1544,8 @@ export default {
             this.eventBus.$emit("emptycart", this.orderdata);
             this.showQucikMenu = false;
             localStorage.setItem("currentOrderId", "");
+            localStorage.setItem("holdCartdata", JSON.stringify({}));
+            this.resetCartStorage();
         },
         emptyCart(force = false) {
             if (force) {
@@ -1560,7 +1566,37 @@ export default {
             if (this.$store.state.Cart.cartdata.line_items.length <= 0) {
                 return;
             }
+            const holdCartItemKey = {};
+            const newCartItemKey = {};
+            let holdCartItems = [];
+            try {
+                const holdCartItemsTemp = JSON.parse(
+                    localStorage.getItem("holdCartdata")
+                );
+                if (holdCartItemsTemp?.line_items) {
+                    holdCartItems = holdCartItemsTemp?.line_items || [];
+                }
+            } catch (err) {
+                holdCartItems = [];
+            }
+            let itemsWillBeDeleted = [];
+            if (holdCartItems.length) {
+                this.cartdata.line_items?.forEach((newItem) => {
+                    newCartItemKey[newItem?.id] = true;
+                });
+                holdCartItems.forEach((holdItem) => {
+                    holdCartItemKey[holdItem?.id] = true;
+                    if (!newCartItemKey[holdItem.id]) {
+                        itemsWillBeDeleted.push({
+                            id: holdItem?.id,
+                            quantity: 0,
+                        });
+                    }
+                });
+            }
+
             this.showLoading();
+
             var self = this,
                 gateway = weLo_.find(this.availableGateways, {
                     id: this.orderdata.payment_method,
@@ -1577,7 +1613,9 @@ export default {
                         shipping: this.orderdata.customer_id
                             ? this.orderdata.shipping
                             : undefined,
-                        line_items: this.cartdata.line_items,
+                        line_items: (this.cartdata.line_items || []).concat(
+                            itemsWillBeDeleted
+                        ),
                         fee_lines: this.cartdata.fee_lines,
                         customer_id: this.orderdata.customer_id,
                         customer_note: this.orderdata.customer_note,
@@ -1850,7 +1888,7 @@ export default {
                     .get(
                         wepos.rest.root +
                             wepos.rest.posversion +
-                            `/products?status=publish&per_page=30&page=${
+                            `/products?status=publish&per_page=100&page=${
                                 this.page
                             }${
                                 this.productFilter
@@ -2189,7 +2227,7 @@ export default {
 
 <style lang="less">
 #wepos-main {
-    padding: 20px;
+    padding: 10px;
     display: flex;
 
     .content-product {
@@ -2515,7 +2553,7 @@ export default {
                     box-sizing: border-box;
                     text-align: center;
                     padding: 0 10px;
-                    margin-bottom: 20px;
+                    margin-bottom: 16px;
                     &:focus {
                         outline: none;
                     }
@@ -2533,11 +2571,18 @@ export default {
                         }
 
                         .title {
-                            padding: 10px 5px;
+                            padding: 8px 4px;
                             margin-top: -3px;
                             color: #212121;
-                            font-size: 15px;
+                            font-size: 14px;
                             border-top: 1px solid #e9edf0;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 1; /* number of lines to show */
+                            line-clamp: 1;
+                            -webkit-box-orient: vertical;
+                            white-space: nowrap;
                         }
                         .add-product-icon {
                             position: absolute;
@@ -3070,7 +3115,7 @@ export default {
                             border-bottom: 1px solid #eceef0;
                             box-shadow: 0 3px 15px 0px rgba(0, 0, 0, 0.04);
                             color: #3b80f4;
-                            font-size: 16px;
+                            font-size: 15px;
 
                             th {
                                 padding: 8px 12px;
@@ -3099,7 +3144,7 @@ export default {
 
                             td {
                                 padding: 8px 12px;
-                                font-size: 15px;
+                                font-size: 14px;
 
                                 &.name {
                                     font-weight: bold;

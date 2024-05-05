@@ -5,6 +5,7 @@
                 <img
                     src="https://secure.gravatar.com/avatar/4bb5db562c96dd5fb4043a9f217a6f8c?s=96&d=mm&r=g"
                 />
+                <span class="user-name">{{ wepos.currentUser }}</span>
             </div>
             <ul>
                 <router-link tag="li" to="/" exact>
@@ -89,17 +90,24 @@ export default {
         padding: 8px;
         position: relative;
         .logo {
-            padding: 10px;
+            padding: 10px 0;
             img {
                 width: 45px;
                 border-radius: 50%;
+                margin-bottom: 5px;
             }
 
             text-align: center;
-            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid white;
+            min-height: 120px;
+        }
+        .user-name {
+            display: block;
+            color: white;
         }
         height: 100vh;
-        width: 80px;
+        width: 60px;
         background-color: var(--primary-color);
         ul {
             margin: 0 -8px;
@@ -173,7 +181,7 @@ export default {
 
     &__right {
         position: fixed;
-        margin-left: 80px;
+        margin-left: 60px;
         padding: 10px;
         z-index: 10;
         flex-grow: 1;
@@ -184,7 +192,7 @@ export default {
             overflow-y: scroll;
         }
 
-        width: calc(100% - 80px);
+        width: calc(100% - 60px);
     }
 }
 </style>
