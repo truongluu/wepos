@@ -190,13 +190,96 @@ export default {
                                     lineItem.product_id === productItem.id
                             );
 
-                            this.$store.dispatch(
-                                "Cart/addToCartActionWithQuantity",
-                                {
-                                    product: productItem,
-                                    quantity: productFromOrder?.quantity || 1,
-                                    line_item_id: productFromOrder?.id || 0,
+                            if (productItem?.type === "variable") {
+                                const selectedAttribute =
+                                    productFromOrder?.meta_data?.reduce(
+                                        (result, metaItem) => {
+                                            if (
+                                                metaItem.display_key &&
+                                                metaItem.display_value
+                                            ) {
+                                                result = {
+                                                    ...result,
+                                                    [metaItem.display_key]:
+                                                        metaItem.display_value,
+                                                };
+                                            }
+                                            return result;
+                                        },
+                                        {}
+                                    ) || {};
+
+                                const chosenVariationProduct =
+                                    this.findMatchingVariations(
+                                        productItem.variations,
+                                        selectedAttribute
+                                    );
+                                const variationProduct =
+                                    chosenVariationProduct[0];
+                                if (!this.hasStock(variationProduct)) {
+                                    this.toast({
+                                        title: this.__(
+                                            "This product is out of stock.",
+                                            "wepos"
+                                        ),
+                                        type: "error",
+                                    });
                                 }
+
+                                variationProduct.parent_id = productItem.id;
+                                variationProduct.type = productItem.type;
+                                variationProduct.name = productItem.name;
+                                variationProduct.type = productItem.type;
+                                this.$store.dispatch(
+                                    "Cart/addToCartActionWithQuantity",
+                                    {
+                                        product: variationProduct,
+                                        quantity:
+                                            productFromOrder?.quantity || 1,
+                                        line_item_id: productFromOrder?.id || 0,
+                                    }
+                                );
+                            } else {
+                                this.$store.dispatch(
+                                    "Cart/addToCartActionWithQuantity",
+                                    {
+                                        product: productItem,
+                                        quantity:
+                                            productFromOrder?.quantity || 1,
+                                        line_item_id: productFromOrder?.id || 0,
+                                    }
+                                );
+                            }
+                        }
+                        if (typeof localStorage != "undefined") {
+                            localStorage.setItem(
+                                "currentOrderId",
+                                `${orderId}`
+                            );
+                            localStorage.setItem(
+                                "cartdata",
+                                JSON.stringify({
+                                    ...this.$store.state.Cart.cartdata,
+                                    fee_lines,
+                                })
+                            );
+                            localStorage.setItem(
+                                "holdCartdata",
+                                JSON.stringify({
+                                    ...this.$store.state.Cart.cartdata,
+                                    fee_lines,
+                                })
+                            );
+                            localStorage.setItem(
+                                "orderdata",
+                                JSON.stringify({
+                                    billing,
+                                    customer_id,
+                                    customer_note,
+                                    payment_method,
+                                    payment_method_title,
+                                    shipping,
+                                })
                             );
                         }
                     })
@@ -205,27 +288,6 @@ export default {
                     });
             }
 
-            if (typeof localStorage != "undefined") {
-                localStorage.setItem("currentOrderId", `${orderId}`);
-                localStorage.setItem(
-                    "cartdata",
-                    JSON.stringify({
-                        ...this.$store.state.Cart.cartdata,
-                        fee_lines,
-                    })
-                );
-                localStorage.setItem(
-                    "orderdata",
-                    JSON.stringify({
-                        billing,
-                        customer_id,
-                        customer_note,
-                        payment_method,
-                        payment_method_title,
-                        shipping,
-                    })
-                );
-            }
             this.$router.push({ name: "Home" });
             this.success({
                 title: this.__("Reopen order successfully", "wepos"),

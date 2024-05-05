@@ -252,7 +252,8 @@ class Assets
             'home_url'                     => home_url('/wepos'),
             'wp_date_format'               => get_option('date_format'),
             'wp_time_format'               => get_option('time_format'),
-            'loggedin'                     => is_user_logged_in()
+            'loggedin'                     => is_user_logged_in(),
+            'currentUser'                  => wp_get_current_user()->user_firstname . ' ' . wp_get_current_user()->user_lastname
         ]);
 
         wp_localize_script('wepos-vendor', 'wepos', $localize_data);
