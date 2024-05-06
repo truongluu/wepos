@@ -170,6 +170,9 @@ export default {
                     )
                 ) {
                     state.cartdata.line_items[index].quantity += 1;
+                    state.cartdata.line_items[index].total =
+                        state.cartdata.line_items[index].quantity *
+                        parseInt(`${product.sales_display_price}`, 10);
                 }
             }
         },
@@ -191,7 +194,6 @@ export default {
             cartObject.stock_status = product.stock_status;
             cartObject.backorders_allowed = product.backorders_allowed;
             cartObject.stock_quantity = product.stock_quantity;
-
             var index = weLo_.findIndex(state.cartdata.line_items, {
                 product_id: cartObject.product_id,
                 variation_id: cartObject.variation_id,
@@ -209,6 +211,9 @@ export default {
                     )
                 ) {
                     state.cartdata.line_items[index].quantity += 1;
+                    state.cartdata.line_items[index].total =
+                        state.cartdata.line_items[index].quantity *
+                        parseInt(`${product.sales_display_price}`, 10);
                 }
             }
         },
@@ -237,6 +242,12 @@ export default {
             } else {
                 state.cartdata.line_items[itemKey].quantity--;
             }
+            state.cartdata.line_items[itemKey].total =
+                state.cartdata.line_items[itemKey].quantity *
+                parseInt(
+                    `${state.cartdata.line_items[itemKey].sale_price}`,
+                    10
+                );
         },
 
         toggleEditQuantity(state, itemKey) {

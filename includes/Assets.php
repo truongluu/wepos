@@ -75,7 +75,6 @@ class Assets
         global $wp_version;
 
         $prefix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-        $prefix = '';
         $dependency = ['jquery', 'wepos-i18n-jed'];
 
         if (version_compare($wp_version, '5.0', '<')) {

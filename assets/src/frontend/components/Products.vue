@@ -324,12 +324,19 @@ export default {
                 title: this.__("Stock", "wepos"),
                 align: "left",
                 renderBodyCell: ({ row }, h) => {
+                    const productId = row["id"];
                     return h(
                         "span",
                         {
                             attrs: { class: row["stock"] },
                         },
-                        [this.__(STOCK_MAPPERS[row["stock"]], "wepos")]
+                        [
+                            this.__(STOCK_MAPPERS[row["stock"]], "wepos"),
+                            row["stock"] === "instock" &&
+                            this.productByKey[productId]["manage_stock"]
+                                ? ` (${this.productByKey[productId]["stock_quantity"]})`
+                                : "",
+                        ]
                     );
                 },
             },
