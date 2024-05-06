@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wePOS - Point Of Sale (POS) for WooCommerce 1.2.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wepos\n"
-"POT-Creation-Date: 2024-05-03 09:26:29+00:00\n"
+"POT-Creation-Date: 2024-05-06 15:07:10+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,12 +27,23 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
+#: assets/js/bootstrap.min.js:69 assets/js/frontend.min.js:28
+#: assets/src/frontend/components/Home.vue:670
+#: assets/src/frontend/components/QuickEditProduct.vue:234
+#: assets/src/utils/Mixin.js:138
+msgid "Cancel"
+msgstr ""
+
 #: assets/js/frontend.js:118
 msgid "template"
 msgstr ""
 
-#: assets/js/frontend.js:148
+#: assets/js/frontend.js:148 assets/js/frontend.js:163
 msgid "div"
+msgstr ""
+
+#: assets/js/frontend.js:163
+msgid "quick-edit"
 msgstr ""
 
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:20
@@ -72,8 +83,8 @@ msgid "Loading"
 msgstr ""
 
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:282
-#: assets/src/frontend/components/Home.vue:488
-#: assets/src/frontend/components/Home.vue:777
+#: assets/src/frontend/components/Home.vue:489
+#: assets/src/frontend/components/Home.vue:778
 msgid "Empty Cart"
 msgstr ""
 
@@ -81,7 +92,8 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:306
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/DashBoard.vue:59
+#: assets/src/frontend/components/Home.vue:306
 msgid "Logout"
 msgstr ""
 
@@ -96,32 +108,32 @@ msgid "Qty"
 msgstr ""
 
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:332
+#: assets/src/frontend/components/Products.vue:347
 #: assets/src/frontend/components/QuickEditProduct.vue:127
 #: assets/src/frontend/components/QuickEditProduct.vue:134
 msgid "Price"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:442
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:443
 msgid "Quantity"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:502
-#: assets/src/frontend/components/Home.vue:1055
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:503
+#: assets/src/frontend/components/Home.vue:1057
 #: assets/src/frontend/components/PrintReceiptHtml.vue:34
 msgid "Subtotal"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:514
-#: assets/src/frontend/components/Home.vue:1064
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:515
+#: assets/src/frontend/components/Home.vue:1066
 #: assets/src/frontend/components/PrintReceiptHtml.vue:36
 msgid "Includes Tax"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:542
-#: assets/src/frontend/components/Home.vue:743
-#: assets/src/frontend/components/Home.vue:1087
-#: assets/src/frontend/components/Home.vue:1709
-#: assets/src/frontend/components/OrderDetail.vue:102
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:543
+#: assets/src/frontend/components/Home.vue:744
+#: assets/src/frontend/components/Home.vue:1089
+#: assets/src/frontend/components/Home.vue:1838
 #: assets/src/frontend/components/PrintReceiptHtml.vue:43
 msgid "Discount"
 msgstr ""
@@ -133,158 +145,153 @@ msgstr ""
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/OrderDetail.vue:39
 #: assets/src/frontend/components/Orders.vue:68
+#: assets/src/frontend/components/Orders.vue:400
 msgid "Total"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:613
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:614
 msgid "Taxable"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:659
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:660
 msgid "Apply"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:669
-#: assets/src/frontend/components/QuickEditProduct.vue:234
-msgid "Cancel"
-msgstr ""
-
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:692
-#: assets/src/frontend/components/Home.vue:748
-#: assets/src/frontend/components/Home.vue:1105
-#: assets/src/frontend/components/Home.vue:1734
-#: assets/src/frontend/components/OrderDetail.vue:118
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:693
+#: assets/src/frontend/components/Home.vue:749
+#: assets/src/frontend/components/Home.vue:1107
+#: assets/src/frontend/components/Home.vue:1863
 #: assets/src/frontend/components/PrintReceiptHtml.vue:47
 msgid "Fee"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:726
-#: assets/src/frontend/components/Home.vue:1124
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:727
+#: assets/src/frontend/components/Home.vue:1126
 #: assets/src/frontend/components/OrderDetail.vue:86
 #: assets/src/frontend/components/PrintReceiptHtml.vue:52
 msgid "Tax"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:795
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:796
 msgid "Hold Order"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:813
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:814
 msgid "Pay Now"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:848
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:849
 msgid "Sale Completed"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:859
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:860
 msgid "New Sale"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:875
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:876
 msgid "Shortcut Keys"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:880
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:881
 msgid "Search Product"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:886
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:887
 msgid "Scan Product"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:892
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:893
 msgid "Toggle Product View"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:898
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:899
 msgid "Add Fee in cart"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:904
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:905
 msgid "Add Discount in cart"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:910
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:911
 msgid "Add Customer note"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:916
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:917
 msgid "Customer Search"
 msgstr ""
 
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Customers.vue:12
-#: assets/src/frontend/components/Home.vue:922
+#: assets/src/frontend/components/Home.vue:923
 msgid "Add new Customer"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:928
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:929
 msgid "Create New Sale"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:934
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:935
 msgid "Empty your cart"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:940
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:941
 msgid "Go to payment receipt"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:946
-#: assets/src/frontend/components/Home.vue:1262
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:947
+#: assets/src/frontend/components/Home.vue:1264
 msgid "Process Payment"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:952
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:953
 #: assets/src/frontend/components/PrintReceipt.vue:5
 msgid "Print Receipt"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:958
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:959
 msgid "Show/Close(Toggle) Help"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:964
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:965
 msgid "Close anything"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:984
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:985
 msgid "Sale Summary"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1134
-#: assets/src/frontend/components/OrderDetail.vue:147
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1136
+#: assets/src/frontend/components/OrderDetail.vue:134
 #: assets/src/frontend/components/PrintReceiptHtml.vue:56
 msgid "Order Total"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1144
-#: assets/src/frontend/components/Home.vue:1158
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1146
+#: assets/src/frontend/components/Home.vue:1160
 msgid "Pay"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1197
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1199
 msgid "No gateway found"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1209
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1211
 #: includes/Gateways/Cash.php:36 includes/Gateways/Cash.php:58
 msgid "Cash"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1227
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1229
 msgid "Change money"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1251
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1253
 msgid "Back to Sale"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerNote.vue:4
 #: assets/src/frontend/components/CustomerNote.vue:8
-#: assets/src/frontend/components/OrderDetail.vue:358
-#: assets/src/frontend/components/OrderDetail.vue:396
+#: assets/src/frontend/components/OrderDetail.vue:345
+#: assets/src/frontend/components/OrderDetail.vue:383
 msgid "Add Note"
 msgstr ""
 
@@ -323,26 +330,26 @@ msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:174
-#: assets/src/frontend/components/Customers.vue:67
+#: assets/src/frontend/components/Customers.vue:69
 msgid "First Name"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:179
-#: assets/src/frontend/components/Customers.vue:72
+#: assets/src/frontend/components/Customers.vue:74
 msgid "Last Name"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:186
-#: assets/src/frontend/components/Customers.vue:79
-#: assets/src/frontend/components/OrderDetail.vue:288
+#: assets/src/frontend/components/Customers.vue:81
+#: assets/src/frontend/components/OrderDetail.vue:275
 msgid "Email"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:193
-#: assets/src/frontend/components/Customers.vue:86
+#: assets/src/frontend/components/Customers.vue:88
 msgid "Address 1"
 msgstr ""
 
@@ -352,21 +359,21 @@ msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:212
-#: assets/src/frontend/components/Customers.vue:105
+#: assets/src/frontend/components/Customers.vue:107
 msgid "Select a country"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:227
 #: assets/src/frontend/components/CustomerSearch.vue:258
-#: assets/src/frontend/components/Customers.vue:120
-#: assets/src/frontend/components/Customers.vue:151
+#: assets/src/frontend/components/Customers.vue:122
+#: assets/src/frontend/components/Customers.vue:153
 msgid "No country found"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:240
-#: assets/src/frontend/components/Customers.vue:133
+#: assets/src/frontend/components/Customers.vue:135
 msgid "Select a state"
 msgstr ""
 
@@ -376,7 +383,7 @@ msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:277
-#: assets/src/frontend/components/Customers.vue:170
+#: assets/src/frontend/components/Customers.vue:172
 msgid "City (optional)"
 msgstr ""
 
@@ -386,19 +393,19 @@ msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:291
-#: assets/src/frontend/components/Customers.vue:184
+#: assets/src/frontend/components/Customers.vue:186
 msgid "Phone (optional)"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:305
-#: assets/src/frontend/components/Customers.vue:201
+#: assets/src/frontend/components/Customers.vue:203
 msgid "Add Customer"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/CustomerSearch.vue:528
-#: assets/src/frontend/components/Customers.vue:408
+#: assets/src/frontend/components/Customers.vue:410
 msgid "Please enter an email address for customer"
 msgstr ""
 
@@ -428,7 +435,7 @@ msgid "Order ID"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:242
+#: assets/src/frontend/components/OrderDetail.vue:229
 #: assets/src/frontend/components/PrintReceiptHtml.vue:6
 msgid "Order Date"
 msgstr ""
@@ -468,18 +475,36 @@ msgstr ""
 msgid "Search product by typing"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1477
-#: assets/src/frontend/components/Home.vue:1963
-#: assets/src/frontend/components/Home.vue:2001
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1480
+#: assets/src/frontend/components/Home.vue:2092
+#: assets/src/frontend/components/Home.vue:2130
 #: assets/src/frontend/components/QuickEditProduct.vue:354
 msgid "All categories"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1869
+#: assets/js/frontend.min.js:28
+#: assets/src/frontend/components/Customers.vue:515
+#: assets/src/frontend/components/Home.vue:1555
+#: assets/src/frontend/components/OrderDetail.vue:454
+#: assets/src/frontend/components/Orders.vue:156
+#: assets/src/frontend/components/Products.vue:220
+msgid "Are you sure"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1556
+msgid "You want to delete this cart?"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1654
+msgid "Held order successfully"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1998
+#: assets/src/frontend/components/Orders.vue:222
 msgid "This product is out of stock."
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:1885
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Home.vue:2014
 msgid "Product is out of stock!"
 msgstr ""
 
@@ -487,11 +512,15 @@ msgstr ""
 msgid "Sign in to your account"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Login.vue:32
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Login.vue:17
+msgid "Username and Password are incorrect"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Login.vue:34
 msgid "Login"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/DashBoard.vue:30
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/DashBoard.vue:31
 #: assets/src/frontend/components/OrderDetail.vue:10
 #: assets/src/frontend/components/Orders.vue:3
 #: assets/src/frontend/components/Reports.vue:192
@@ -549,30 +578,67 @@ msgid "Refund"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/Customers.vue:513
-#: assets/src/frontend/components/OrderDetail.vue:467
-#: assets/src/frontend/components/Orders.vue:156
-#: assets/src/frontend/components/Products.vue:218
-msgid "Are you sure"
+#: assets/src/frontend/components/OrderActionsButton.vue:39
+msgid "Reopen"
 msgstr ""
 
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Orders.vue:157
 msgid "You want to refund this order?"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Orders.vue:199
-#: assets/src/frontend/components/Reports.vue:420
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Orders.vue:303
+msgid "Reopen order successfully"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Orders.vue:342
+#: assets/src/frontend/components/Reports.vue:338
 msgid "Guest user"
 msgstr ""
 
+#: assets/js/frontend.min.js:28
+#: assets/src/frontend/components/OrderDetail.vue:20
+#: assets/src/frontend/components/Orders.vue:61
+#: assets/src/frontend/components/Orders.vue:393
+msgid "Order"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Orders.vue:74
+#: assets/src/frontend/components/Orders.vue:406
+#: assets/src/frontend/components/Reports.vue:507
+msgid "Status"
+msgstr ""
+
+#: assets/js/frontend.min.js:28
+#: assets/src/frontend/components/OrderDetail.vue:263
+#: assets/src/frontend/components/Orders.vue:83
+#: assets/src/frontend/components/Orders.vue:415
+#: assets/src/frontend/components/Reports.vue:500
+msgid "Customer"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Orders.vue:89
+#: assets/src/frontend/components/Orders.vue:421
+msgid "Gateway"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Orders.vue:95
+#: assets/src/frontend/components/Orders.vue:430
+#: assets/src/frontend/components/Reports.vue:464
+msgid "Date"
+msgstr ""
+
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Customers.vue:6
-#: assets/src/frontend/components/DashBoard.vue:39
+#: assets/src/frontend/components/DashBoard.vue:40
 #: assets/src/frontend/layouts/DefaultLayout.vue:39
 msgid "Customers"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Customers.vue:46
-#: assets/src/frontend/components/Products.vue:40
+#: assets/js/frontend.min.js:28
+msgid "Type for search and Enter"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Customers.vue:48
+#: assets/src/frontend/components/Products.vue:42
 msgid "Empty data"
 msgstr ""
 
@@ -581,37 +647,59 @@ msgid "Edit Customer"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/Customers.vue:200
+#: assets/src/frontend/components/Customers.vue:202
 msgid "Update Customer"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/DashBoard.vue:13
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/DashBoard.vue:14
 #: assets/src/frontend/layouts/DefaultLayout.vue:13
 msgid "Home"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/DashBoard.vue:22
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/DashBoard.vue:23
 #: assets/src/frontend/components/Products.vue:6
 #: assets/src/frontend/components/Reports.vue:209
 #: assets/src/frontend/layouts/DefaultLayout.vue:22
 msgid "Products"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/DashBoard.vue:47
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/DashBoard.vue:48
 #: assets/src/frontend/components/Reports.vue:5
 #: assets/src/frontend/layouts/DefaultLayout.vue:47
 msgid "Reports"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/Customers.vue:514
+#: assets/src/frontend/components/ActionsButton.vue:23
+msgid "Edit"
+msgstr ""
+
+#: assets/js/frontend.min.js:28
+#: assets/src/frontend/components/ActionsButton.vue:31
+msgid "Delete"
+msgstr ""
+
+#: assets/js/frontend.min.js:28
+#: assets/src/frontend/components/Customers.vue:264
+#: assets/src/frontend/components/Customers.vue:598
+msgid "Name"
+msgstr ""
+
+#: assets/js/frontend.min.js:28
+#: assets/src/frontend/components/Customers.vue:277
+#: assets/src/frontend/components/Customers.vue:616
+msgid "Registered date"
+msgstr ""
+
+#: assets/js/frontend.min.js:28
+#: assets/src/frontend/components/Customers.vue:516
 msgid "You want to delete this customer?"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:20
-#: assets/src/frontend/components/Orders.vue:61
-msgid "Order"
+#: assets/src/frontend/components/Customers.vue:610
+#: assets/src/frontend/components/OrderDetail.vue:287
+msgid "Phone"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
@@ -626,79 +714,67 @@ msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/OrderDetail.vue:69
-#: assets/src/frontend/components/OrderDetail.vue:130
+#: assets/src/frontend/components/OrderDetail.vue:117
 msgid "Shipping"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:171
+#: assets/src/frontend/components/OrderDetail.vue:158
 msgid "Billing Address"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:194
+#: assets/src/frontend/components/OrderDetail.vue:181
 msgid "Shipping Address"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:221
+#: assets/src/frontend/components/OrderDetail.vue:208
 msgid "General Details"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:229
+#: assets/src/frontend/components/OrderDetail.vue:216
 msgid "Order Status"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:259
+#: assets/src/frontend/components/OrderDetail.vue:246
 msgid "Earning From Order"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:276
-#: assets/src/frontend/components/Orders.vue:83
-#: assets/src/frontend/components/Reports.vue:323
-msgid "Customer"
-msgstr ""
-
-#: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:300
-msgid "Phone"
-msgstr ""
-
-#: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:318
+#: assets/src/frontend/components/OrderDetail.vue:305
 msgid "Order Notes"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:329
+#: assets/src/frontend/components/OrderDetail.vue:316
 msgid "added"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:343
+#: assets/src/frontend/components/OrderDetail.vue:330
 msgid "Delete note"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:373
+#: assets/src/frontend/components/OrderDetail.vue:360
 msgid "Customer Note"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:381
+#: assets/src/frontend/components/OrderDetail.vue:368
 msgid "Admin Note"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:439
+#: assets/src/frontend/components/OrderDetail.vue:426
 msgid "Guest"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
-#: assets/src/frontend/components/OrderDetail.vue:468
+#: assets/src/frontend/components/OrderDetail.vue:455
 msgid "You want to delete this note?"
 msgstr ""
 
@@ -707,10 +783,11 @@ msgstr ""
 msgid "Quick Edit"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:102
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:104
+#: assets/src/frontend/components/Products.vue:318
 #: assets/src/frontend/components/QuickEditProduct.vue:12
 #: assets/src/frontend/components/QuickEditProduct.vue:18
-#: assets/src/frontend/components/Reports.vue:344 includes/Gateways/Cash.php:55
+#: assets/src/frontend/components/Reports.vue:436 includes/Gateways/Cash.php:55
 msgid "Title"
 msgstr ""
 
@@ -740,7 +817,7 @@ msgstr ""
 
 #: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/QuickEditProduct.vue:118
-#: includes/functions.php:205
+#: includes/functions.php:204
 msgid "SKU"
 msgstr ""
 
@@ -750,7 +827,13 @@ msgid "Sale Price"
 msgstr ""
 
 #: assets/js/frontend.min.js:28
+#: assets/src/frontend/components/QuickEditProduct.vue:147
+msgid "Sale price"
+msgstr ""
+
+#: assets/js/frontend.min.js:28
 #: assets/src/frontend/components/QuickEditProduct.vue:151
+#: assets/src/frontend/components/QuickEditProduct.vue:157
 msgid "Weight"
 msgstr ""
 
@@ -814,16 +897,30 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:181
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:183
 msgid "Updated product successfully"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:186
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:188
 msgid "Update product failed"
 msgstr ""
 
-#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:219
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:221
 msgid "You want to delete this product?"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:94
+#: assets/src/frontend/components/Products.vue:308
+msgid "Image"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:110
+#: assets/src/frontend/components/Products.vue:324
+msgid "Stock"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Products.vue:365
+msgid "Created At"
 msgstr ""
 
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Reports.vue:28
@@ -887,14 +984,32 @@ msgid "Total Shipping Tax"
 msgstr ""
 
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Reports.vue:160
-#: assets/src/frontend/components/Reports.vue:265
-#: assets/src/frontend/components/Reports.vue:300
-#: assets/src/frontend/components/Reports.vue:356
+#: assets/src/frontend/components/Reports.vue:419
+#: assets/src/frontend/components/Reports.vue:448
+#: assets/src/frontend/components/Reports.vue:476
 msgid "Total Sale"
 msgstr ""
 
 #: assets/js/frontend.min.js:28 assets/src/frontend/components/Reports.vue:175
+#: assets/src/frontend/components/Reports.vue:420
 msgid "Total Orders"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Reports.vue:457
+msgid "Total Unit Sold"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Reports.vue:471
+#: includes/functions.php:203
+msgid "ID"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Reports.vue:485
+msgid "Net Sale"
+msgstr ""
+
+#: assets/js/frontend.min.js:28 assets/src/frontend/components/Reports.vue:494
+msgid "Total Product"
 msgstr ""
 
 #: assets/src/admin/components/ColorPicker.vue:9
@@ -935,41 +1050,8 @@ msgid "Choose your file"
 msgstr ""
 
 #: assets/src/frontend/components/CustomerSearch.vue:231
-#: assets/src/frontend/components/Customers.vue:124
+#: assets/src/frontend/components/Customers.vue:126
 msgid "Country (optional)"
-msgstr ""
-
-#: assets/src/frontend/components/Orders.vue:74
-#: assets/src/frontend/components/Reports.vue:329
-msgid "Status"
-msgstr ""
-
-#: assets/src/frontend/components/Orders.vue:89
-msgid "Gateway"
-msgstr ""
-
-#: assets/src/frontend/components/Orders.vue:95
-msgid "Date"
-msgstr ""
-
-#: assets/src/frontend/components/Products.vue:108
-msgid "Stock"
-msgstr ""
-
-#: assets/src/frontend/components/QuickEditProduct.vue:147
-msgid "Sale price"
-msgstr ""
-
-#: assets/src/frontend/components/Reports.vue:308
-msgid "Net Sale"
-msgstr ""
-
-#: assets/src/frontend/components/Reports.vue:316
-msgid "Total Product"
-msgstr ""
-
-#: assets/src/frontend/components/Reports.vue:364
-msgid "Total Unit Sold"
 msgstr ""
 
 #: includes/Admin/Admin.php:27
@@ -1047,11 +1129,11 @@ msgstr ""
 msgid "Show POS menu in vendor dashboard"
 msgstr ""
 
-#: includes/Dokan.php:159 includes/functions.php:193
+#: includes/Dokan.php:159 includes/functions.php:192
 msgid "Yes"
 msgstr ""
 
-#: includes/Dokan.php:160 includes/functions.php:194
+#: includes/Dokan.php:160 includes/functions.php:193
 msgid "No"
 msgstr ""
 
@@ -1170,61 +1252,57 @@ msgstr ""
 msgid "Password."
 msgstr ""
 
-#: includes/functions.php:138
+#: includes/functions.php:137
 msgid "- select -"
 msgstr ""
 
-#: includes/functions.php:162
+#: includes/functions.php:161
 msgid "General"
 msgstr ""
 
-#: includes/functions.php:167
+#: includes/functions.php:166
 msgid "Receipts"
 msgstr ""
 
-#: includes/functions.php:188
+#: includes/functions.php:187
 msgid "Calculate tax for Fee"
 msgstr ""
 
-#: includes/functions.php:189
+#: includes/functions.php:188
 msgid "Choose if tax caluclate for fee in POS cart and checkout"
 msgstr ""
 
-#: includes/functions.php:199
+#: includes/functions.php:198
 msgid "Barcode Scanner field"
 msgstr ""
 
-#: includes/functions.php:200
+#: includes/functions.php:199
 msgid ""
 "Choose your barcode field. If you select <code>Custom Field</code> then you "
 "need to set barcode number manually in product edit page"
 msgstr ""
 
-#: includes/functions.php:204
-msgid "ID"
-msgstr ""
-
-#: includes/functions.php:206
+#: includes/functions.php:205
 msgid "Custom field"
 msgstr ""
 
-#: includes/functions.php:213
+#: includes/functions.php:212
 msgid "Order receipt header"
 msgstr ""
 
-#: includes/functions.php:214
+#: includes/functions.php:213
 msgid "Enter your order receipt header"
 msgstr ""
 
-#: includes/functions.php:220
+#: includes/functions.php:219
 msgid "Order receipt footer"
 msgstr ""
 
-#: includes/functions.php:221
+#: includes/functions.php:220
 msgid "Enter your order receipt footer text"
 msgstr ""
 
-#: includes/functions.php:223
+#: includes/functions.php:222
 msgid "Thank you"
 msgstr ""
 

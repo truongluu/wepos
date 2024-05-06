@@ -94,34 +94,21 @@
                                                     }}
                                                 </td>
                                             </tr>
-                                            <tr class="no-border">
+                                            <tr
+                                                class="no-border"
+                                                v-for="fee in order.fee_lines"
+                                            >
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    {{
-                                                        __("Discount", "wepos")
-                                                    }}
+                                                    {{ fee.name }}
                                                     [?]:
                                                 </td>
                                                 <td>
-                                                    {{
-                                                        formatPrice(
-                                                            order.discount_total
-                                                        )
-                                                    }}
+                                                    {{ formatPrice(fee.total) }}
                                                 </td>
                                             </tr>
-                                            <tr class="no-border">
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    {{ __("Fee", "wepos") }}
-                                                    [?]:
-                                                </td>
-                                                <td>
-                                                    {{ formatPrice(0) }}
-                                                </td>
-                                            </tr>
+
                                             <tr class="no-border">
                                                 <td></td>
                                                 <td></td>

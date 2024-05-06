@@ -184,6 +184,7 @@ export default {
                             productIds.toString()
                     )
                     .then((response) => {
+                        this.$store.dispatch("Cart/emptyCartAction");
                         for (const productItem of response) {
                             const productFromOrder = line_items.find(
                                 (lineItem) =>
@@ -252,6 +253,15 @@ export default {
                             }
                         }
                         if (typeof localStorage != "undefined") {
+                            const updatedFeeLines = fee_lines.map((feeItem) => {
+                                return {
+                                    ...feeItem,
+                                    type: !feeItem.total.indexOf("-")
+                                        ? "discount"
+                                        : "fee",
+                                    value: feeItem.total,
+                                };
+                            });
                             localStorage.setItem(
                                 "currentOrderId",
                                 `${orderId}`
@@ -260,14 +270,14 @@ export default {
                                 "cartdata",
                                 JSON.stringify({
                                     ...this.$store.state.Cart.cartdata,
-                                    fee_lines,
+                                    fee_lines: updatedFeeLines,
                                 })
                             );
                             localStorage.setItem(
                                 "holdCartdata",
                                 JSON.stringify({
                                     ...this.$store.state.Cart.cartdata,
-                                    fee_lines,
+                                    fee_lines: updatedFeeLines,
                                 })
                             );
                             localStorage.setItem(
@@ -287,11 +297,12 @@ export default {
                         this.hideLoading();
                     });
             }
-
-            this.$router.push({ name: "Home" });
-            this.success({
-                title: this.__("Reopen order successfully", "wepos"),
-            });
+            setTimeout(() => {
+                this.$router.push({ name: "Home" });
+                this.success({
+                    title: this.__("Reopen order successfully", "wepos"),
+                });
+            }, 350);
         },
 
         startFetchOrders(page) {
